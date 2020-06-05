@@ -1,6 +1,0 @@
-apiVersion: mysql.oracle.com/v1alpha1
-kind: Cluster
-metadata:
-  name: test-kind-Cluster
-spec:
-  members: 3
