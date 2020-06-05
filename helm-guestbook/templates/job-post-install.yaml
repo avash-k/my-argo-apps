@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: post-install
+  labels:
+    app: {{ template "helm-guestbook.name" . }}
+    chart: {{ template "helm-guestbook.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    argocd.argoproj.io/hook: {{ .Values.hooks.lastsync }}
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  template:
+    spec:
+      containers:
+        - name: pre-install
+          image: alpine:latest
+          command: ["sleep", "20"]
+      restartPolicy: OnFailure
+  backoffLimit: 0
+
