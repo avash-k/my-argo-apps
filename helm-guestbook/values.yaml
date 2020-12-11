@@ -6,7 +6,7 @@ hooks:
   firstsync: PreSync
   lastsync: PostSync
 
-replicaCount: 2
+replicaCount: 3
 
 image:
   repository: gcr.io/heptio-images/ks-guestbook-demo
